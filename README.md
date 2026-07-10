@@ -42,7 +42,7 @@ Backing up cloud storage to a local machine (NAS, home server, laptop) shouldn't
 Requires Go 1.22+.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/nimbus-sync.git
+git clone https://github.com/ivansostarko/nimbus-sync.git
 cd nimbus-sync
 ./scripts/install.sh
 ```
