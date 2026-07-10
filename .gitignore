@@ -1,0 +1,8 @@
+bin/
+dist/
+*.nimbus-tmp
+config.yaml
+tokens/
+reports/
+.idea/
+.vscode/

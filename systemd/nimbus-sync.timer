@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Nimbus Sync on a schedule
+
+[Timer]
+# Every 6 hours; adjust to taste (see `man systemd.time`).
+OnCalendar=00/6:00
+Persistent=true
+RandomizedDelaySec=5m
+
+[Install]
+WantedBy=timers.target

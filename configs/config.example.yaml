@@ -1,0 +1,52 @@
+# Nimbus Sync configuration
+# Location: ~/.config/nimbus-sync/config.yaml
+
+# Cron schedule used by `nimbus daemon` (minute hour dom month dow).
+# Default: every 6 hours.
+schedule: "0 */6 * * *"
+
+# Parallel downloads per remote.
+concurrency: 4
+
+verbose: false
+
+# OAuth application credentials — see README "Creating API credentials".
+providers:
+  onedrive:
+    client_id: "YOUR_AZURE_APP_CLIENT_ID"
+    client_secret: ""            # optional for public client apps
+  gdrive:
+    client_id: "YOUR_GOOGLE_OAUTH_CLIENT_ID"
+    client_secret: "YOUR_GOOGLE_OAUTH_CLIENT_SECRET"
+  dropbox:
+    client_id: "YOUR_DROPBOX_APP_KEY"
+    client_secret: "YOUR_DROPBOX_APP_SECRET"
+
+# Cloud folders to mirror locally (cloud -> local, one-way).
+remotes:
+  - name: work-onedrive
+    provider: onedrive
+    remote_path: "Documents/Work"     # path inside your OneDrive
+    local_path: "~/CloudSync/OneDrive/Work"
+    enabled: true
+    delete_local: false               # true = remove local files deleted in cloud
+    exclude:
+      - "*.tmp"
+      - "~$*"
+
+  - name: personal-gdrive
+    provider: gdrive
+    remote_path: "Photos/2026"
+    local_path: "~/CloudSync/GDrive/Photos-2026"
+    enabled: true
+    delete_local: false
+    exclude: []
+
+  - name: shared-dropbox
+    provider: dropbox
+    remote_path: "/Team Folder/Reports"
+    local_path: "~/CloudSync/Dropbox/Reports"
+    enabled: false
+    delete_local: true
+    exclude:
+      - ".DS_Store"
